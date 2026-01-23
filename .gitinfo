@@ -1,5 +1,6 @@
 {
   "root": "http://forgejo/zuedev/gitinfo",
+  "gitmail": "patches+gitinfo@zue.dev",
   "description": "Markup specification for the .gitinfo file, a way to help discern different hosts of the same repo.",
   "tags": [
     "gitinfo",
