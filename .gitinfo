@@ -1,0 +1,20 @@
+{
+  "root": "http://forgejo/zuedev/gitinfo",
+  "description": "Markup specification for the .gitinfo file, a way to help discern different hosts of the same repo.",
+  "tags": [
+    "gitinfo",
+    "specification",
+    "repository",
+    "metadata"
+  ],
+  "mirrors": [
+    "https://github.com/zuedev/gitinfo"
+  ],
+  "maintainers": [
+    [
+      "Alex (@zuedev)",
+      "zuedev@gmail.com"
+    ]
+  ],
+  "license": "Unlicense"
+}
