@@ -16,6 +16,7 @@ The `.gitinfo` file uses JSONC (JSON with Comments) format, allowing for easy re
 {
   "root": "https://github.com/example/repository",
   "gitmail": "patches@example.com",
+  "icon": "https://example.com/icon.png",
   "description": "Example repository description",
   "tags": ["example", "repository", "gitinfo"],
   "mirrors": [
@@ -34,6 +35,7 @@ The `.gitinfo` file uses JSONC (JSON with Comments) format, allowing for easy re
 
 - `root`: The URL of the root repository. This key is mandatory and should point to the main hosting location of the repository that acts as the source of truth for the codebase.
 - `gitmail`: An email address associated with the repository for submitting git patches. See [git-send-email.io](https://git-send-email.io/) for details.
+- `icon`: A public URL or data URI formatted image (PNG, SVG, etc.) representing an icon for the repository. If using a data URI, we recommend using base64 encoding for compatibility.
 - `description`: A brief description of the repository's purpose or contents.
 - `tags`: A list of tags or keywords associated with the repository for easier categorization and searchability.
 - `mirrors`: A list of URLs representing mirror repositories.
