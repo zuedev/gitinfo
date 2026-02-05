@@ -35,6 +35,7 @@
         "type": "string",
         "minLength": 1
       },
+      "minItems": 1,
       "description": "A list of tags or keywords associated with the repository for easier categorization and searchability."
     },
     "mirrors": {
@@ -43,6 +44,7 @@
         "type": "string",
         "format": "uri"
       },
+      "minItems": 1,
       "description": "A list of URLs representing mirror repositories."
     },
     "maintainers": {
@@ -63,6 +65,7 @@
         "minItems": 2,
         "maxItems": 2
       },
+      "minItems": 1,
       "description": "A list of maintainers or contributors to the repository, provided as a 2D array with names and email addresses in the format [[name, email], ...]."
     },
     "license": {
@@ -105,6 +108,7 @@
         "type": "string",
         "format": "uri"
       },
+      "minItems": 1,
       "description": "A list of URLs for sponsorship or funding platforms (e.g., GitHub Sponsors, Open Collective, Patreon)."
     },
     "version": {
