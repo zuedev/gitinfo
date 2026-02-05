@@ -110,6 +110,26 @@
     "version": {
       "type": "string",
       "description": "The version of the .gitinfo schema being used. Can be a semver string or a git commit hash."
+    },
+    "ci": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the CI/CD platform or pipeline status page for the repository."
+    },
+    "issues": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the issue tracker, if different from the root repository."
+    },
+    "chat": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of a community chat platform (e.g., Discord, Matrix, Slack, IRC)."
+    },
+    "docs": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the project's documentation site."
     }
   },
   "additionalProperties": false

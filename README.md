@@ -80,6 +80,10 @@ All keys are optional. Include only the fields relevant to your project.
 - `homepage`: The URL of the project's homepage or documentation site, if separate from the repository.
 - `funding`: A list of URLs for sponsorship or funding platforms (e.g., GitHub Sponsors, Open Collective, Patreon).
 - `version`: The version of the `.gitinfo` schema being used for this file. Can be a semver string (e.g., `1.0.0`) or a git commit hash.
+- `ci`: The URL of the CI/CD platform or pipeline status page for the repository.
+- `issues`: The URL of the issue tracker, if different from the root repository.
+- `chat`: The URL of a community chat platform (e.g., Discord, Matrix, Slack, IRC).
+- `docs`: The URL of the project's documentation site.
 
 ### Validation Rules
 
@@ -96,6 +100,10 @@ All keys are optional. Include only the fields relevant to your project.
 | `homepage`      | Valid URI (http/https)       | `https://example.com/project`                                 |
 | `funding[]`     | Valid URI (http/https)       | `https://github.com/sponsors/user`                            |
 | `version`       | Semver or commit hash        | `1.0.0`, `a1b2c3d4e5f6...`                                    |
+| `ci`            | Valid URI (http/https)       | `https://github.com/user/repo/actions`                        |
+| `issues`        | Valid URI (http/https)       | `https://github.com/user/repo/issues`                         |
+| `chat`          | Valid URI (http/https)       | `https://discord.gg/example`                                  |
+| `docs`          | Valid URI (http/https)       | `https://docs.example.com`                                    |
 
 ## Usage
 
