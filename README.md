@@ -39,6 +39,12 @@ You can reference the schema in your `.gitinfo` file using the `$schema` propert
     ["Bob Johnson", "bob@example.com"],
   ],
   "license": "MIT",
+  "homepage": "https://example.com/project",
+  "funding": [
+    "https://github.com/sponsors/example",
+    "https://opencollective.com/example",
+  ],
+  "version": "1.0.0",
 }
 ```
 
@@ -54,6 +60,9 @@ All keys are optional. Include only the fields relevant to your project.
 - `mirrors`: A list of URLs representing mirror repositories.
 - `maintainers`: A list of maintainers or contributors to the repository, provided as a 2D array with names and email addresses in the format `[[name, email], ...]`. We recommend using this field instead of traditional Git author/committer metadata for better clarity on who is responsible for the repository.
 - `license`: The license under which the repository is distributed (e.g., MIT, GPL-3.0). We recommend using the short identifier from [SPDX License List](https://spdx.org/licenses/) for consistency.
+- `homepage`: The URL of the project's homepage or documentation site, if separate from the repository.
+- `funding`: A list of URLs for sponsorship or funding platforms (e.g., GitHub Sponsors, Open Collective, Patreon).
+- `version`: The version of the `.gitinfo` schema being used for this file. Can be a semver string (e.g., `1.0.0`) or a git commit hash.
 
 ### Validation Rules
 
@@ -67,6 +76,9 @@ All keys are optional. Include only the fields relevant to your project.
 | `tags[]`        | Non-empty string             | `"cli"`                                                       |
 | `description`   | String                       | Any text                                                      |
 | `license`       | SPDX identifier              | `MIT`, `GPL-3.0`, `Apache-2.0`                                |
+| `homepage`      | Valid URI (http/https)       | `https://example.com/project`                                 |
+| `funding[]`     | Valid URI (http/https)       | `https://github.com/sponsors/user`                            |
+| `version`       | Semver or commit hash        | `1.0.0`, `a1b2c3d4e5f6...`                                    |
 
 ## Usage
 
