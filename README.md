@@ -31,16 +31,26 @@ https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json
 
 You can reference the schema in your `.gitinfo` file using the `$schema` property for editor autocompletion and validation support.
 
-#### CLI Validator
+#### CLI Validators
 
-A command-line validator is included:
+Command-line validators are available in multiple languages. See the [`validators/`](validators/) folder:
+
+**Node.js** ([readme](validators/nodejs/README.md)):
 
 ```bash
-# Validate .gitinfo in current directory
-node validate.js
+node validators/nodejs/validate.js [path/to/.gitinfo]
+```
 
-# Validate a specific file
-node validate.js path/to/.gitinfo
+**PowerShell** ([readme](validators/powershell/README.md)):
+
+```powershell
+.\validators\powershell\Validate-GitInfo.ps1 [-Path path/to/.gitinfo]
+```
+
+**Bash** ([readme](validators/bash/README.md)) - requires `jq`:
+
+```bash
+./validators/bash/validate.sh [path/to/.gitinfo]
 ```
 
 ### Example `.gitinfo` File

@@ -10,8 +10,8 @@
 const fs = require("fs");
 const path = require("path");
 
-// Load the schema
-const SCHEMA_PATH = path.join(__dirname, "gitinfo.schema.json");
+// Load the schema (two levels up from validators/nodejs/)
+const SCHEMA_PATH = path.join(__dirname, "..", "..", "gitinfo.schema.json");
 
 /**
  * Strip JSONC comments (single-line // and multi-line /* *\/)
