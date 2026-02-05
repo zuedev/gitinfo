@@ -6,6 +6,17 @@
 
 The `.gitinfo` file is a simple text file that can be placed in the root directory of a Git repository. It contains metadata about the repository that can help differentiate between different hosts or instances of the same repository. This is particularly useful in scenarios where the same codebase is hosted on multiple platforms (e.g., GitHub, GitLab, Bitbucket) or when working with forks and clones. The `.gitinfo` file can provide information such as the original source of the repository, the intended hosting platforms, or any other relevant details that help identify the context of the repository.
 
+## Why gitinfo?
+
+Git is decentralized by design—the same repository can exist on multiple hosts, be forked countless times, and cloned to thousands of machines. While this is a strength, it creates challenges:
+
+- **Which copy is canonical?** When a project is mirrored across GitHub, GitLab, Codeberg, and self-hosted instances, there's no standard way to indicate which is the "source of truth."
+- **How do I contribute?** Some projects prefer patches via email (`git send-email`), others use pull requests, and some use both. This information often lives only in scattered documentation.
+- **Who maintains this?** Git commits show authors, but maintainership changes. A file in the repo can stay current when people move on.
+- **Is this a fork or the original?** Forks and mirrors often look identical. Users waste time figuring out which repository to star, watch, or contribute to.
+
+The `.gitinfo` file solves these problems by embedding authoritative metadata directly in the repository—portable, version-controlled, and always available regardless of which host you cloned from.
+
 ## File Format
 
 The `.gitinfo` file uses JSONC (JSON with Comments) format, allowing for easy readability and the inclusion of comments. The file consists of key-value pairs, where each key represents a specific piece of metadata about the repository.
