@@ -98,3 +98,38 @@ When the same repository exists on multiple hosts:
 - Cache parsed `.gitinfo` data per repository clone
 - Invalidate cache when the file changes (use file mtime or git hooks)
 - Respect HTTP caching headers when fetching remote `icon` URLs
+
+## FAQ
+
+### Should `.gitinfo` be committed to the repository?
+
+Yes. The file should be version-controlled so it travels with the codebase across all hosts and clones.
+
+### What if different hosts have conflicting `.gitinfo` files?
+
+The `root` repository is authoritative. If someone modifies `.gitinfo` on a mirror, the change should be merged upstream to `root` or discarded. Tools should warn users when a mirror's `.gitinfo` differs from the root.
+
+### Can I use `.gitinfo` in a fork?
+
+Yes. Forks may have their own `.gitinfo` pointing to the fork as `root`, or they can keep the original `root` and add themselves to `mirrors[]`. The choice depends on whether the fork is intended as a permanent divergence or a temporary contribution branch.
+
+### What happens if `root` points to a URL that no longer exists?
+
+Parsers should handle dead links gracefully. Consider falling back to mirrors if available, or simply reporting the metadata without verifying URL accessibility.
+
+### Should I include `.gitinfo` in `.gitignore`?
+
+No. The file is meant to be shared across all clones and hosts.
+
+### Can I add custom fields?
+
+The schema uses `additionalProperties: false` for strict validation. If you need custom metadata, consider opening an issue to propose additions to the spec. For local experimentation, you can use a separate file or fork the schema.
+
+### How do I handle private repositories?
+
+All fields are optional. For private repos, you may omit `root` and `mirrors` if the URLs shouldn't be exposed, while still using `description`, `maintainers`, and other metadata internally.
+
+### What's the difference between `root` and `mirrors`?
+
+- `root`: The single source of truth—where authoritative changes are made
+- `mirrors`: Read-only copies that sync from `root`, or alternative access points
