@@ -25,9 +25,11 @@ fi
 
 # Strip JSONC comments using sed
 strip_comments() {
-    # Remove carriage returns, single-line comments, multi-line comments, and trailing commas
+    # Remove carriage returns, single-line comments (only at start of line), 
+    # multi-line comments, and trailing commas
+    # Note: only strips // comments at line start to avoid breaking URLs like https://
     tr -d '\r' < "$1" \
-        | sed 's|//.*||g' \
+        | sed 's|^[[:space:]]*//.*||g' \
         | sed 's|/\*[^*]*\*/||g' \
         | sed 's/,[[:space:]]*}/}/g' \
         | sed 's/,[[:space:]]*]/]/g'
