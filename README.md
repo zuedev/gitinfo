@@ -67,3 +67,34 @@ All keys are optional. Include only the fields relevant to your project.
 | `tags[]`        | Non-empty string             | `"cli"`                                                       |
 | `description`   | String                       | Any text                                                      |
 | `license`       | SPDX identifier              | `MIT`, `GPL-3.0`, `Apache-2.0`                                |
+
+## Usage
+
+Guidelines for tools and parsers consuming `.gitinfo` files:
+
+### Discovery
+
+1. Look for `.gitinfo` in the repository root directory
+2. The file is optional—gracefully handle its absence
+3. Parse as JSONC (strip comments before JSON parsing)
+
+### Parsing Recommendations
+
+- Use a JSONC-compatible parser (e.g., `jsonc-parser` for Node.js, `json5` for Python)
+- Validate against the JSON Schema when available
+- Treat all fields as optional; check for existence before use
+- Ignore unknown fields for forward compatibility
+
+### Precedence
+
+When the same repository exists on multiple hosts:
+
+1. The `root` URL, if present, indicates the canonical source
+2. If no `root` is specified, treat all instances as equal
+3. Mirror URLs in `mirrors[]` are considered secondary copies
+
+### Caching
+
+- Cache parsed `.gitinfo` data per repository clone
+- Invalidate cache when the file changes (use file mtime or git hooks)
+- Respect HTTP caching headers when fetching remote `icon` URLs
