@@ -133,3 +133,7 @@ All fields are optional. For private repos, you may omit `root` and `mirrors` if
 
 - `root`: The single source of truth—where authoritative changes are made
 - `mirrors`: Read-only copies that sync from `root`, or alternative access points
+
+## Contributing
+
+Want to propose changes to the specification? See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting issues and pull requests.
