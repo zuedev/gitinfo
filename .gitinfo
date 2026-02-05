@@ -1,4 +1,5 @@
 {
+  "$schema": "https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json",
   "root": "http://forgejo/zuedev/gitinfo",
   "gitmail": "patches+gitinfo@zue.dev",
   "description": "Markup specification for the .gitinfo file, a way to help discern different hosts of the same repo.",
