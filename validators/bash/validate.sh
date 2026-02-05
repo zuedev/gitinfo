@@ -63,9 +63,9 @@ validate() {
         exit 1
     fi
     
-    # Load schema
+    # Load schema (also strip carriage returns for Windows compatibility)
     local schema
-    if ! schema=$(jq -c . "$SCHEMA_PATH" 2>&1); then
+    if ! schema=$(tr -d '\r' < "$SCHEMA_PATH" | jq -c . 2>&1); then
         echo -e "${RED}Error parsing schema: $schema${NC}" >&2
         exit 1
     fi

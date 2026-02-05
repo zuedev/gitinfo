@@ -1,0 +1,16 @@
+# Ensure consistent line endings (LF) for all text files
+* text=auto eol=lf
+
+# Explicitly mark certain files as text
+*.md text
+*.json text
+*.jsonc text
+*.gitinfo text
+*.yml text
+*.yaml text
+*.js text
+*.ps1 text
+*.sh text eol=lf
+
+# Shell scripts must always use LF
+validators/bash/*.sh text eol=lf
