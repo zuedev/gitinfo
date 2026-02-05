@@ -5,6 +5,11 @@
   "description": "Schema for the .gitinfo file specification",
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "Reference to the JSON Schema for validation and editor support."
+    },
     "root": {
       "type": "string",
       "format": "uri",
