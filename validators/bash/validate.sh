@@ -27,7 +27,8 @@ fi
 strip_comments() {
     # Remove carriage returns (Windows line endings), single-line comments, and multi-line comments
     # Also remove trailing commas before } or ] (valid in JSONC, invalid in JSON)
-    cat "$1" | tr -d '\r' | sed -e 's|//.*$||g' -e ':a;s|/\*.*\*/||g;ta' -e '/\/\*/,/\*\//d' | sed -e 's/,\s*}/}/g' -e 's/,\s*]/]/g'
+    # Uses POSIX-compatible sed syntax for portability (works with busybox sed)
+    cat "$1" | tr -d '\r' | sed 's|//.*$||g' | sed 's|/\*[^*]*\*/||g' | sed 's/,[ 	]*}/}/g' | sed 's/,[ 	]*]/]/g'
 }
 
 # Validate URI format
