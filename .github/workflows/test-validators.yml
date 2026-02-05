@@ -4,17 +4,17 @@ on:
   push:
     branches: [main]
     paths:
-      - 'validators/**'
-      - 'gitinfo.schema.json'
-      - 'examples/**'
-      - '.github/workflows/test-validators.yml'
+      - "validators/**"
+      - "gitinfo.schema.json"
+      - "examples/**"
+      - ".github/workflows/test-validators.yml"
   pull_request:
     branches: [main]
     paths:
-      - 'validators/**'
-      - 'gitinfo.schema.json'
-      - 'examples/**'
-      - '.github/workflows/test-validators.yml'
+      - "validators/**"
+      - "gitinfo.schema.json"
+      - "examples/**"
+      - ".github/workflows/test-validators.yml"
   workflow_dispatch:
 
 jobs:
@@ -69,13 +69,13 @@ jobs:
         shell: pwsh
         run: |
           '{"invalid_field": "should fail"}' | Set-Content /tmp/invalid.gitinfo
-          try {
-            ./validators/powershell/Validate-GitInfo.ps1 -Path /tmp/invalid.gitinfo
-            Write-Error "Expected validation to fail but it passed"
+          ./validators/powershell/Validate-GitInfo.ps1 -Path /tmp/invalid.gitinfo
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "Expected validation to fail but it passed"
             exit 1
-          } catch {
-            Write-Host "Correctly detected invalid file"
           }
+          Write-Host "Correctly detected invalid file"
+          exit 0
 
   test-bash:
     name: Test Bash Validator
