@@ -25,9 +25,9 @@ fi
 
 # Strip JSONC comments using sed
 strip_comments() {
-    # Remove single-line comments (// ...) and multi-line comments (/* ... */)
-    # This is a simplified version - doesn't handle comments inside strings perfectly
-    sed -e 's|//.*$||g' -e ':a;s|/\*.*\*/||g;ta' -e '/\/\*/,/\*\//d' "$1"
+    # Remove carriage returns (Windows line endings), single-line comments, and multi-line comments
+    # Also remove trailing commas before } or ] (valid in JSONC, invalid in JSON)
+    cat "$1" | tr -d '\r' | sed -e 's|//.*$||g' -e ':a;s|/\*.*\*/||g;ta' -e '/\/\*/,/\*\//d' | sed -e 's/,\s*}/}/g' -e 's/,\s*]/]/g'
 }
 
 # Validate URI format
