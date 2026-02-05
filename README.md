@@ -200,6 +200,14 @@ All fields are optional. For private repos, you may omit `root` and `mirrors` if
 - `root`: The single source of truth—where authoritative changes are made
 - `mirrors`: Read-only copies that sync from `root`, or alternative access points
 
+## Adoption
+
+Projects using `.gitinfo`:
+
+- [gitinfo](https://forgejo.zue.dev/zuedev/gitinfo) — This specification repository
+
+**Want to be listed?** Email [zuedev+gitinfoadoption@gmail.com](mailto:zuedev+gitinfoadoption@gmail.com) with your repository URL.
+
 ## Contributing
 
 Want to propose changes to the specification? See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting issues and pull requests.
