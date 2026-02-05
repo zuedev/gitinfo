@@ -24,7 +24,7 @@ You can reference the schema in your `.gitinfo` file using the `$schema` propert
 
 ```jsonc
 {
-  "$schema": "ttps://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json",
+  "$schema": "https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json",
   "root": "https://github.com/example/repository",
   "gitmail": "patches@example.com",
   "icon": "https://example.com/icon.png",
