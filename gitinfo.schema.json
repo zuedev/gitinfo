@@ -67,7 +67,32 @@
     },
     "license": {
       "type": "string",
-      "description": "The license under which the repository is distributed. Use the short identifier from SPDX License List for consistency."
+      "description": "The license under which the repository is distributed. Use the short identifier from SPDX License List for consistency.",
+      "examples": [
+        "MIT",
+        "Apache-2.0",
+        "GPL-2.0-only",
+        "GPL-2.0-or-later",
+        "GPL-3.0-only",
+        "GPL-3.0-or-later",
+        "LGPL-2.1-only",
+        "LGPL-2.1-or-later",
+        "LGPL-3.0-only",
+        "LGPL-3.0-or-later",
+        "BSD-2-Clause",
+        "BSD-3-Clause",
+        "ISC",
+        "MPL-2.0",
+        "AGPL-3.0-only",
+        "AGPL-3.0-or-later",
+        "Unlicense",
+        "CC0-1.0",
+        "CC-BY-4.0",
+        "CC-BY-SA-4.0",
+        "WTFPL",
+        "Zlib",
+        "BSL-1.0"
+      ]
     },
     "homepage": {
       "type": "string",
