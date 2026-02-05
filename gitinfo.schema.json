@@ -4,7 +4,6 @@
   "title": ".gitinfo",
   "description": "Schema for the .gitinfo file specification",
   "type": "object",
-  "required": ["root"],
   "properties": {
     "root": {
       "type": "string",

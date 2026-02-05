@@ -44,7 +44,9 @@ You can reference the schema in your `.gitinfo` file using the `$schema` propert
 
 ### Supported Keys
 
-- `root`: The URL of the root repository. This key is mandatory and should point to the main hosting location of the repository that acts as the source of truth for the codebase.
+All keys are optional. Include only the fields relevant to your project.
+
+- `root`: The URL of the root repository, pointing to the main hosting location that acts as the source of truth for the codebase.
 - `gitmail`: An email address associated with the repository for submitting git patches. See [git-send-email.io](https://git-send-email.io/) for details.
 - `icon`: A public URL or data URI formatted image (PNG, SVG, etc.) representing an icon for the repository. If using a data URI, we recommend using base64 encoding for compatibility.
 - `description`: A brief description of the repository's purpose or contents.
