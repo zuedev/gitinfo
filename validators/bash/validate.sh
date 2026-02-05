@@ -141,7 +141,7 @@ validate() {
                         if ! validate_uri "$item"; then
                             errors+=(".${key}[$i]: invalid URI \"$item\"")
                         fi
-                        ((i++))
+                        i=$((i + 1))
                     done < <(echo "$json" | jq -r --arg k "$key" '.[$k][]?')
                 fi
             fi
