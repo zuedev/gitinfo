@@ -10,10 +10,21 @@ The `.gitinfo` file is a simple text file that can be placed in the root directo
 
 The `.gitinfo` file uses JSONC (JSON with Comments) format, allowing for easy readability and the inclusion of comments. The file consists of key-value pairs, where each key represents a specific piece of metadata about the repository.
 
+### Validation
+
+A JSON Schema is available for validating `.gitinfo` files:
+
+```
+https://raw.githubusercontent.com/zuedev/gitinfo/main/gitinfo.schema.json
+```
+
+You can reference the schema in your `.gitinfo` file using the `$schema` property for editor autocompletion and validation support.
+
 ### Example `.gitinfo` File
 
 ```jsonc
 {
+  "$schema": "https://raw.githubusercontent.com/zuedev/gitinfo/main/gitinfo.schema.json",
   "root": "https://github.com/example/repository",
   "gitmail": "patches@example.com",
   "icon": "https://example.com/icon.png",
