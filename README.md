@@ -54,3 +54,16 @@ All keys are optional. Include only the fields relevant to your project.
 - `mirrors`: A list of URLs representing mirror repositories.
 - `maintainers`: A list of maintainers or contributors to the repository, provided as a 2D array with names and email addresses in the format `[[name, email], ...]`. We recommend using this field instead of traditional Git author/committer metadata for better clarity on who is responsible for the repository.
 - `license`: The license under which the repository is distributed (e.g., MIT, GPL-3.0). We recommend using the short identifier from [SPDX License List](https://spdx.org/licenses/) for consistency.
+
+### Validation Rules
+
+| Field           | Format                       | Example                                                       |
+| --------------- | ---------------------------- | ------------------------------------------------------------- |
+| `root`          | Valid URI (http/https)       | `https://github.com/user/repo`                                |
+| `gitmail`       | Valid email address          | `patches@example.com`                                         |
+| `icon`          | URL (http/https) or data URI | `https://example.com/icon.png` or `data:image/png;base64,...` |
+| `mirrors[]`     | Valid URI (http/https)       | `https://gitlab.com/user/repo`                                |
+| `maintainers[]` | Tuple of `[name, email]`     | `["Alice", "alice@example.com"]`                              |
+| `tags[]`        | Non-empty string             | `"cli"`                                                       |
+| `description`   | String                       | Any text                                                      |
+| `license`       | SPDX identifier              | `MIT`, `GPL-3.0`, `Apache-2.0`                                |
