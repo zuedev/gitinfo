@@ -15,7 +15,7 @@ The `.gitinfo` file uses JSONC (JSON with Comments) format, allowing for easy re
 A JSON Schema is available for validating `.gitinfo` files:
 
 ```
-ttps://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json
+https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json
 ```
 
 You can reference the schema in your `.gitinfo` file using the `$schema` property for editor autocompletion and validation support.
