@@ -25,10 +25,12 @@ fi
 
 # Strip JSONC comments using sed
 strip_comments() {
-    # Remove carriage returns (Windows line endings), single-line comments, and multi-line comments
-    # Also remove trailing commas before } or ] (valid in JSONC, invalid in JSON)
-    # Uses POSIX-compatible sed syntax for portability (works with busybox sed)
-    cat "$1" | tr -d '\r' | sed 's|//.*$||g' | sed 's|/\*[^*]*\*/||g' | sed 's/,[ 	]*}/}/g' | sed 's/,[ 	]*]/]/g'
+    # Remove carriage returns, single-line comments, multi-line comments, and trailing commas
+    tr -d '\r' < "$1" \
+        | sed 's|//.*||g' \
+        | sed 's|/\*[^*]*\*/||g' \
+        | sed 's/,[[:space:]]*}/}/g' \
+        | sed 's/,[[:space:]]*]/]/g'
 }
 
 # Validate URI format

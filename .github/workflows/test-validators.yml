@@ -86,21 +86,25 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: apk add --no-cache bash jq coreutils
+        run: apk add --no-cache bash jq coreutils sed
 
       - name: Make script executable
         run: chmod +x validators/bash/validate.sh
 
       - name: Validate minimal example
+        shell: bash
         run: ./validators/bash/validate.sh examples/minimal.gitinfo
 
       - name: Validate open-source-project example
+        shell: bash
         run: ./validators/bash/validate.sh examples/open-source-project.gitinfo
 
       - name: Validate mirror-only example (JSONC with comments)
+        shell: bash
         run: ./validators/bash/validate.sh examples/mirror-only.gitinfo
 
       - name: Test invalid file detection
+        shell: bash
         run: |
           echo '{"invalid_field": "should fail"}' > /tmp/invalid.gitinfo
           if ./validators/bash/validate.sh /tmp/invalid.gitinfo; then
