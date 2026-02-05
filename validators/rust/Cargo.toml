@@ -1,0 +1,16 @@
+[package]
+name = "gitinfo-validator"
+version = "0.1.0"
+edition = "2021"
+description = "CLI validator for .gitinfo files"
+license = "MIT"
+
+[[bin]]
+name = "validate"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+json_comments = "0.2"
+regex = "1.10"

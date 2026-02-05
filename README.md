@@ -53,6 +53,13 @@ node validators/nodejs/validate.js [path/to/.gitinfo]
 ./validators/bash/validate.sh [path/to/.gitinfo]
 ```
 
+**Rust** ([readme](validators/rust/README.md)):
+
+```bash
+cd validators/rust && cargo build --release
+./validators/rust/target/release/validate [path/to/.gitinfo]
+```
+
 ### Example `.gitinfo` File
 
 ```jsonc

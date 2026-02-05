@@ -119,3 +119,34 @@ jobs:
           else
             echo "Correctly detected invalid file"
           fi
+
+  test-rust:
+    name: Test Rust Validator
+    runs-on: ubuntu-latest
+    container:
+      image: rust:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build validator
+        working-directory: validators/rust
+        run: cargo build --release
+
+      - name: Validate minimal example
+        run: ./validators/rust/target/release/validate examples/minimal.gitinfo
+
+      - name: Validate open-source-project example
+        run: ./validators/rust/target/release/validate examples/open-source-project.gitinfo
+
+      - name: Validate mirror-only example (JSONC with comments)
+        run: ./validators/rust/target/release/validate examples/mirror-only.gitinfo
+
+      - name: Test invalid file detection
+        run: |
+          echo '{"invalid_field": "should fail"}' > /tmp/invalid.gitinfo
+          if ./validators/rust/target/release/validate /tmp/invalid.gitinfo; then
+            echo "Expected validation to fail but it passed"
+            exit 1
+          else
+            echo "Correctly detected invalid file"
+          fi
