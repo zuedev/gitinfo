@@ -1,0 +1,111 @@
+name: Validate Validators
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'validators/**'
+      - 'gitinfo.schema.json'
+      - 'examples/**'
+      - '.github/workflows/test-validators.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'validators/**'
+      - 'gitinfo.schema.json'
+      - 'examples/**'
+      - '.github/workflows/test-validators.yml'
+  workflow_dispatch:
+
+jobs:
+  test-nodejs:
+    name: Test Node.js Validator
+    runs-on: ubuntu-latest
+    container:
+      image: node:20-alpine
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate minimal example
+        run: node validators/nodejs/validate.js examples/minimal.gitinfo
+
+      - name: Validate open-source-project example
+        run: node validators/nodejs/validate.js examples/open-source-project.gitinfo
+
+      - name: Validate mirror-only example (JSONC with comments)
+        run: node validators/nodejs/validate.js examples/mirror-only.gitinfo
+
+      - name: Test invalid file detection
+        run: |
+          echo '{"invalid_field": "should fail"}' > /tmp/invalid.gitinfo
+          if node validators/nodejs/validate.js /tmp/invalid.gitinfo; then
+            echo "Expected validation to fail but it passed"
+            exit 1
+          else
+            echo "Correctly detected invalid file"
+          fi
+
+  test-powershell:
+    name: Test PowerShell Validator
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/powershell:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate minimal example
+        shell: pwsh
+        run: ./validators/powershell/Validate-GitInfo.ps1 -Path examples/minimal.gitinfo
+
+      - name: Validate open-source-project example
+        shell: pwsh
+        run: ./validators/powershell/Validate-GitInfo.ps1 -Path examples/open-source-project.gitinfo
+
+      - name: Validate mirror-only example (JSONC with comments)
+        shell: pwsh
+        run: ./validators/powershell/Validate-GitInfo.ps1 -Path examples/mirror-only.gitinfo
+
+      - name: Test invalid file detection
+        shell: pwsh
+        run: |
+          '{"invalid_field": "should fail"}' | Set-Content /tmp/invalid.gitinfo
+          try {
+            ./validators/powershell/Validate-GitInfo.ps1 -Path /tmp/invalid.gitinfo
+            Write-Error "Expected validation to fail but it passed"
+            exit 1
+          } catch {
+            Write-Host "Correctly detected invalid file"
+          }
+
+  test-bash:
+    name: Test Bash Validator
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: apk add --no-cache bash jq coreutils
+
+      - name: Make script executable
+        run: chmod +x validators/bash/validate.sh
+
+      - name: Validate minimal example
+        run: ./validators/bash/validate.sh examples/minimal.gitinfo
+
+      - name: Validate open-source-project example
+        run: ./validators/bash/validate.sh examples/open-source-project.gitinfo
+
+      - name: Validate mirror-only example (JSONC with comments)
+        run: ./validators/bash/validate.sh examples/mirror-only.gitinfo
+
+      - name: Test invalid file detection
+        run: |
+          echo '{"invalid_field": "should fail"}' > /tmp/invalid.gitinfo
+          if ./validators/bash/validate.sh /tmp/invalid.gitinfo; then
+            echo "Expected validation to fail but it passed"
+            exit 1
+          else
+            echo "Correctly detected invalid file"
+          fi
