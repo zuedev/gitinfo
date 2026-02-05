@@ -1,0 +1,10 @@
+{
+  "$schema": "https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json",
+  // This is a read-only mirror. Contributions should go to the root repository.
+  "root": "https://github.com/upstream/project",
+  "description": "Mirror of upstream/project - do not submit PRs here",
+  "mirrors": [
+    "https://gitlab.com/mirror/project",
+    "https://codeberg.org/mirror/project"
+  ]
+}

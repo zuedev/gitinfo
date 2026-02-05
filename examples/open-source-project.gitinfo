@@ -1,0 +1,24 @@
+{
+  "$schema": "https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json",
+  "root": "https://github.com/example/awesome-project",
+  "description": "A full-featured open source project with multiple mirrors and maintainers",
+  "license": "MIT",
+  "homepage": "https://awesome-project.dev",
+  "icon": "https://awesome-project.dev/logo.png",
+  "tags": ["cli", "rust", "developer-tools", "productivity"],
+  "gitmail": "patches@awesome-project.dev",
+  "mirrors": [
+    "https://gitlab.com/example/awesome-project",
+    "https://codeberg.org/example/awesome-project",
+    "https://sr.ht/~example/awesome-project"
+  ],
+  "maintainers": [
+    ["Alice Johnson", "alice@awesome-project.dev"],
+    ["Bob Smith", "bob@awesome-project.dev"]
+  ],
+  "funding": [
+    "https://github.com/sponsors/example",
+    "https://opencollective.com/awesome-project"
+  ],
+  "version": "1.0.0"
+}

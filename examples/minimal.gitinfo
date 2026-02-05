@@ -1,0 +1,4 @@
+{
+  "$schema": "https://forgejo.zue.dev/zuedev/gitinfo/raw/branch/main/gitinfo.schema.json",
+  "root": "https://github.com/user/project"
+}

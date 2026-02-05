@@ -59,6 +59,12 @@ You can reference the schema in your `.gitinfo` file using the `$schema` propert
 }
 ```
 
+See the [`examples/`](examples/) folder for more sample configurations:
+
+- [`minimal.gitinfo`](examples/minimal.gitinfo) — Bare minimum with just a root URL
+- [`open-source-project.gitinfo`](examples/open-source-project.gitinfo) — Full-featured project with mirrors, maintainers, and funding
+- [`mirror-only.gitinfo`](examples/mirror-only.gitinfo) — Read-only mirror pointing to upstream
+
 ### Supported Keys
 
 All keys are optional. Include only the fields relevant to your project.
