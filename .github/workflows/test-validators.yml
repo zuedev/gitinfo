@@ -86,7 +86,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: apk add --no-cache bash jq coreutils sed
+        run: apk add --no-cache bash jq coreutils sed dos2unix
+
+      - name: Convert line endings
+        run: |
+          dos2unix validators/bash/validate.sh
+          dos2unix gitinfo.schema.json
+          dos2unix examples/*.gitinfo
 
       - name: Make script executable
         run: chmod +x validators/bash/validate.sh
