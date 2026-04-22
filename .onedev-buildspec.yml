@@ -12,7 +12,7 @@ jobs:
     optional: false
   - type: PushRepository
     name: Mirror to gitlab.docker-compose.zue.dev
-    remoteUrl: https://gitlab.docker-compose.zue.dev/zuedev/gitinfo
+    remoteUrl: https://gitlab.docker-compose.zue.dev/zuedev/gitinfo.git
     userName: zuedev
     passwordSecret: gitlab.docker-compose-access-token
     force: true
